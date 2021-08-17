@@ -14,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
@@ -35,7 +35,7 @@ public class CategoryServiceTest {
 
     @Test
     @DisplayName("Must return a category searched by id")
-    void whenFindByIdIsCalledWithAValidIdThenReturnTheCategory(){
+    void whenFindByIdIsCalledWithAValidIdThenReturnTheCategory() {
         when(categoryRepository.findById(validId)).thenReturn(Optional.of(category));
         categoryDTO = categoryService.findById(validId);
         assertThat(categoryDTO.getId(), is(equalTo(category.getId())));
@@ -44,7 +44,7 @@ public class CategoryServiceTest {
 
     @Test
     @DisplayName("Must throw an exception when a category is not found by id")
-    void whenFindByIdIsCalledWithAnInvalidIdThenThrowAnException(){
+    void whenFindByIdIsCalledWithAnInvalidIdThenThrowAnException() {
         when(categoryRepository.findById(invalidId)).thenReturn(Optional.empty());
         assertThrows(ResourceNotFoundException.class, () -> categoryService.findById(invalidId));
     }

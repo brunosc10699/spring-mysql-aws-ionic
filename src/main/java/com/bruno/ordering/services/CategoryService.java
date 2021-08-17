@@ -15,7 +15,7 @@ public class CategoryService {
 
     public CategoryDTO findById(Long id){
         Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("ID " + id + " not found!"));
+                .orElseThrow(() -> new ResourceNotFoundException(id));
         return new CategoryDTO(category);
     }
 }
