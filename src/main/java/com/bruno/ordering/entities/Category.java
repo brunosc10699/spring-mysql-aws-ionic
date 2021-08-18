@@ -1,17 +1,16 @@
 package com.bruno.ordering.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_category")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,4 +22,11 @@ public class Category implements Serializable {
     @Column(unique = true, nullable = false)
     private String name;
 
+    @ManyToMany(mappedBy = "categories")
+    private List<Product> products;
+
+    public Category(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

@@ -1,6 +1,5 @@
 package com.bruno.ordering.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -28,6 +27,11 @@ public class Product implements Serializable {
     private BigDecimal price;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "tb_product_category",
+        joinColumns = @JoinColumn(name = "product_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     private List<Category> categories = new ArrayList<>();
 
     public Product(Long id, String name, BigDecimal price) {
