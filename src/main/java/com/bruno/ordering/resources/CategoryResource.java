@@ -2,7 +2,7 @@ package com.bruno.ordering.resources;
 
 import com.bruno.ordering.dto.CategoryDTO;
 import com.bruno.ordering.services.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,10 +13,10 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/v1/categories")
+@RequiredArgsConstructor
 public class CategoryResource {
 
-    @Autowired
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<CategoryDTO> findById(@Valid @PathVariable Long id){

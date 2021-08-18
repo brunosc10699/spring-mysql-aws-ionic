@@ -1,4 +1,4 @@
-package com.bruno.ordering.resources.exceptions;
+package com.bruno.ordering.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

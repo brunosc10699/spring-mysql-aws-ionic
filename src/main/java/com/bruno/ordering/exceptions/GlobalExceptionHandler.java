@@ -1,16 +1,16 @@
-package com.bruno.ordering.resources.exceptions;
+package com.bruno.ordering.exceptions;
 
 import com.bruno.ordering.services.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 
-@ControllerAdvice
-public class ResourceExceptionHandler {
+@RestControllerAdvice
+public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<StandardError> resourceNotFound(
@@ -20,7 +20,7 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.NOT_FOUND;
         String message = "The resource you were looking for was not found!";
         StandardError standardError = new StandardError(
-                Instant.now(),
+                timestamp,
                 status.value(),
                 exception.getMessage(),
                 message,
