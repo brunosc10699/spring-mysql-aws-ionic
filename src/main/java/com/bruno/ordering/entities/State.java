@@ -1,18 +1,18 @@
 package com.bruno.ordering.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "tb_city")
+@Table(name = "tb_state")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class City implements Serializable {
+public class State implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -20,11 +20,14 @@ public class City implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "state_id")
-    private State state;
+    @OneToMany(mappedBy = "state")
+    private List<City> cities = new ArrayList<>();
 
+    public State(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
