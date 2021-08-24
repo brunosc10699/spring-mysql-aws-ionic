@@ -1,5 +1,7 @@
 package com.bruno.ordering.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,8 @@ import java.util.List;
 @Table(name = "tb_state")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class State implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,8 +30,4 @@ public class State implements Serializable {
     @OneToMany(mappedBy = "state")
     private List<City> cities = new ArrayList<>();
 
-    public State(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 }

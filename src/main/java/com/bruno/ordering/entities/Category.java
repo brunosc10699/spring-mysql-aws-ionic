@@ -1,5 +1,7 @@
 package com.bruno.ordering.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @Table(name = "tb_category")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,8 +29,4 @@ public class Category implements Serializable {
     @ManyToMany(mappedBy = "categories")
     private List<Product> products;
 
-    public Category(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 }

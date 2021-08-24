@@ -4,12 +4,15 @@ import com.bruno.ordering.dto.CategoryDTO;
 import com.bruno.ordering.entities.Category;
 import com.bruno.ordering.repositories.CategoryRepository;
 import com.bruno.ordering.services.exceptions.ResourceNotFoundException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
 
 import java.util.Optional;
 

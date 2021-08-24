@@ -1,10 +1,7 @@
 package com.bruno.ordering.dto;
 
 import com.bruno.ordering.entities.Category;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.Size;
@@ -14,6 +11,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CategoryDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

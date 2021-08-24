@@ -1,5 +1,7 @@
 package com.bruno.ordering.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,8 @@ import java.util.List;
 @Table(name = "tb_product")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,9 +38,4 @@ public class Product implements Serializable {
     )
     private List<Category> categories = new ArrayList<>();
 
-    public Product(Long id, String name, BigDecimal price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
 }
