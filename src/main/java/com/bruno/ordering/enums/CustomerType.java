@@ -13,7 +13,7 @@ public enum CustomerType {
     private Integer code;
     private String description;
 
-    public CustomerType toEnum(Integer code){
+    public static CustomerType toEnum(Integer code){
         if(code == null) return null;
 
         for(CustomerType type : CustomerType.values()){
