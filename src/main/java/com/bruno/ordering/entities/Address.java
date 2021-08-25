@@ -1,5 +1,6 @@
 package com.bruno.ordering.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,4 +32,13 @@ public class Address implements Serializable {
     private String neighborhood;
 
     private String zipCode;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customers;
+
+    @OneToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 }

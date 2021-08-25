@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,6 +41,9 @@ public class Customer implements Serializable {
     @ElementCollection
     @CollectionTable(name = "tb_phone")
     private Set<String> phones = new HashSet<>();
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Address> addresses = new ArrayList<>();
 
     public CustomerType getType(){
         return CustomerType.toEnum(type);
