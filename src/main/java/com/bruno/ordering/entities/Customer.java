@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_customer")
@@ -33,6 +35,10 @@ public class Customer implements Serializable {
     private String cpfOrCnpj;
 
     private Integer type;
+
+    @ElementCollection
+    @CollectionTable(name = "tb_phone")
+    private Set<String> phones = new HashSet<>();
 
     public CustomerType getType(){
         return CustomerType.toEnum(type);
