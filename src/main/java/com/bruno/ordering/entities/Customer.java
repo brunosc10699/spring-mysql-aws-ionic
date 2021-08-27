@@ -1,6 +1,6 @@
 package com.bruno.ordering.entities;
 
-import com.bruno.ordering.enums.CustomerType;
+import com.bruno.ordering.entities.enums.CustomerType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

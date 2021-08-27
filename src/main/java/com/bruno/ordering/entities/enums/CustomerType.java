@@ -1,4 +1,4 @@
-package com.bruno.ordering.enums;
+package com.bruno.ordering.entities.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
