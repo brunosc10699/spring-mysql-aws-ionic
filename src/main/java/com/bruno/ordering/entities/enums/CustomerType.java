@@ -1,10 +1,11 @@
 package com.bruno.ordering.entities.enums;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum CustomerType {
 
     PERSONAL(1, "Personal"),
