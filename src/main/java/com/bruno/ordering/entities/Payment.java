@@ -1,5 +1,6 @@
 package com.bruno.ordering.entities;
 
+import com.bruno.ordering.entities.enums.PaymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,21 @@ public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Integer paymentStatus;
+
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    @MapsId
+    private Order order;
+
+    public PaymentStatus getPaymentStatus(){
+        return PaymentStatus.toEnum(paymentStatus);
+    }
+
+    public void setPaymentStatus(PaymentStatus paymentStatus){
+        this.paymentStatus = paymentStatus.getCode();
+    }
 
 }
